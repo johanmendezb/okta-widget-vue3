@@ -5,15 +5,15 @@ import { ref } from '@vue/reactivity';
 import { oktaAuth } from '../utils/okta';
 
 const store = useStore();
-const userData = ref<any | null>(null);
+const userData = ref<{ claim: string, value: string }[] | null>(null);
 
 const isLoggedin = store.state.loggedIn;
 
 onMounted(async () => {
   try {
-    userData.value = await Object.entries(
+    userData!.value = await Object.entries(
       await oktaAuth.getUser(),
-    ).map((entry) => ({ claim: entry[0], value: entry[1] }));
+    ).map((entry) => ({ claim: entry![0], value: entry![1] }));
   } catch (error) {
     console.warn('General widget catch Error', error);
   }
