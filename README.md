@@ -20,5 +20,5 @@ npm run build
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Live demo
+See [okta-finantial.surge.sh](https://okta-finantial.surge.sh/).

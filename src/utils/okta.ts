@@ -5,8 +5,9 @@ import OktaSignIn from '@okta/okta-signin-widget';
 const CLIENT_ID = '0oa3du6gwnuCLHEqW5d7';
 const ISSUER = 'https://dev-22944439.okta.com/oauth2/default';
 
-const BASENAME = process.env.NODE_ENV === 'production' ? '/custom-login' : '';
-const REDIRECT_URI = `${window.location.origin}${BASENAME}/login/callback`;
+const REDIRECT_URI = `${window.location.origin}/login/callback`;
+
+console.log('REDIRECT_URI: ', REDIRECT_URI);
 
 export const signInWidgetConfig = {
   // Docs: https://github.com/okta/okta-signin-widget#okta-sign-in-widget
@@ -60,9 +61,6 @@ export const signInWidgetConfig = {
     issuer: ISSUER,
     scopes: ['openid', 'email', 'profile', 'address', 'phone'],
     pkce: true,
-  },
-  app: {
-    basename: BASENAME,
   },
 };
 
