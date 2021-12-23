@@ -1,23 +1,36 @@
 <script setup lang="ts">
+import { onMounted } from 'vue';
 import { useStore } from 'vuex';
-// eslint-disable-next-line import/extensions
-import oktaAuth from './utils/okta';
+import { useRouter } from 'vue-router';
+import { oktaAuth, signInWidget } from './utils/okta';
 
 const store = useStore();
-
-const logIn = async () => {
-  await oktaAuth.signInWithRedirect();
-  // Maybe add logout commit as signInWithRedirect callback
-  store.commit('login');
-};
+const router = useRouter();
 
 const logOut = async () => {
-  await oktaAuth.signOut();
+  console.log('oktaAuth. ', oktaAuth);
   // Maybe add logout commit as signOut callback
   store.commit('logout');
+
+  await oktaAuth.signOut();
 };
 
-console.log('store.state.loggedIn: ', store.state.loggedIn);
+onMounted(() => {
+  // Check for an existing authClient transaction
+  signInWidget.authClient.session.exists()
+    .then((exists: boolean) => {
+      if (exists) {
+        store.commit('login');
+        router.push('/dashboard');
+        console.log('A session exists!', signInWidget.authClient);
+      } else {
+        store.commit('logout');
+        console.log('A session does not exist.', signInWidget.authClient.session);
+      }
+    });
+});
+
+console.log('loggedIn?: ', store.state.loggedIn);
 
 </script>
 

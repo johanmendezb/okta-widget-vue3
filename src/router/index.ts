@@ -26,11 +26,6 @@ const routes: Array<RouteRecordRaw> = [
     },
   },
   {
-    path: '/password-reset',
-    name: 'PasswordReset',
-    component: () => import('../views/PasswordReset.vue'),
-  },
-  {
     path: '/signin/register',
     name: 'Register',
     component: () => import('../views/Register.vue'),

@@ -4,7 +4,7 @@ import router from './router';
 import store from './store';
 import App from './App.vue';
 // eslint-disable-next-line import/extensions
-import oktaAuth from './utils/okta';
+import { oktaAuth } from './utils/okta';
 
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
