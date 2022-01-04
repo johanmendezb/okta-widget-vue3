@@ -21,7 +21,7 @@ const widgetSuccessCallback = async (token:Tokens) => {
 const widgetErrorCallback = (error:string) => {
   console.warn('Widget callback error: ', error);
 };
-
+// Docs: https://developer.okta.com/docs/guides/custom-widget
 onMounted(() => {
   try {
     // Render Widget and assign callback events.
@@ -37,6 +37,8 @@ onMounted(() => {
       console.log('Widget view context: ', context);
 
       const titleElement = widget?.value?.getElementsByClassName('okta-form-title');
+      const containerElement = widget?.value?.getElementsByClassName('auth-container');
+
       const p = document.createElement('p');
       p.classList.add('text-center', 'py-2');
 
@@ -51,6 +53,13 @@ onMounted(() => {
       if (context?.controller === 'primary-auth') {
         p.innerText = 'Copy here about Login in to your Advance America account';
         titleElement![0].after(p);
+
+        return;
+      }
+      if (context?.controller === 'password-reset-email-sent') {
+        p.innerText = 'If you did not receive an email, please double check your address or re-submit.';
+        titleElement![0].after(p);
+        containerElement![0].classList.add('blue-bg');
       }
     });
   } catch (error) {
@@ -70,6 +79,10 @@ onUnmounted(() => {
     border: none;
     text-align: left;
 
+    &.blue-bg {
+      background: blue;
+    }
+
     .okta-sign-in-header {
       border-bottom-color: transparent;
     }
@@ -86,9 +99,31 @@ onUnmounted(() => {
       font-weight: bold;
     }
 
+    form.o-form {
+      .o-form-control input {
+        background: #F7F6F7;
+      }
+    }
+
     .registration-link {
       color: #072238;
       text-decoration: underline;
+    }
+
+    .enroll-factor-row {
+      .enroll-factor-button .button {
+        border-radius: 24px;
+        background: #0E406A;
+        width: 100%;
+        height: 50px;
+        line-height: 49px;
+        color: white;
+        text-align: center;
+      }
+
+      .mfa-okta-sms {
+        background-image: url(https://yt3.ggpht.com/yti/APfAmoEgme5wHF0i8tquFWLpE-G8hQt32RwNU4nkVDUJmg=s88-c-k-c0x00ffffff-no-rj-mo);
+      }
     }
   }
 </style>
