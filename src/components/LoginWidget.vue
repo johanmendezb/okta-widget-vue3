@@ -79,6 +79,13 @@ onUnmounted(() => {
     border: none;
     text-align: left;
 
+    .button.button-primary {
+      border-radius: 26px;
+      background: #0E406A;
+      border: none;
+      font-weight: bold;
+    }
+
     &.blue-bg {
       background: blue;
     }

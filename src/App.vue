@@ -37,6 +37,7 @@ console.log('loggedIn?: ', store.state.loggedIn);
 <template>
   <div id="nav">
     <router-link to="/">Home</router-link> |
+    <router-link to="/print"> Print</router-link> |
     <router-link v-if="!store.state.loggedIn" to="/login"> Login</router-link> |
     <router-link v-if="!store.state.loggedIn" to="/signin/register">register</router-link> |
     <router-link v-if="store.state.loggedIn" to="/dashboard">dashboard</router-link> |
