@@ -16,10 +16,10 @@ export const signInWidgetConfig = {
   i18n: {
     en: {
       'primaryauth.title': 'Log In',
-      'primaryauth.submit': 'LOGIN',
-      'primaryauth.username.placeholder': 'EMAIL ADDRESS',
-      'primaryauth.password.placeholder': 'PASSWORD',
-      needhelp: 'need help',
+      'primaryauth.submit': 'Log In',
+      'primaryauth.username.placeholder': 'Email Address',
+      'primaryauth.password.placeholder': 'Password',
+      needhelp: 'Log In Help',
       'registration.signup.label': 'New customer?',
       'registration.signup.text': 'Create an account',
       // https://github.com/okta/okta-signin-widget/blob/master/packages/%40okta/i18n/src/properties/login.properties

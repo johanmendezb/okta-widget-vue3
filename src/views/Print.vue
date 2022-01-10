@@ -7,7 +7,7 @@ const pdfCORSUrl = ref('https://test.cors.workers.dev/?https://www.w3.org/WAI/ER
 
 const downloadItem = async () => {
   const response = await axios.get(pdfCORSUrl.value, { responseType: 'blob' });
-  console.log('response; ', response);
+  console.log('blob response: ', response);
 
   const blob = new Blob([response.data], { type: 'application/pdf' });
   const link = document.createElement('a');

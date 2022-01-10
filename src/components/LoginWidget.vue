@@ -40,18 +40,18 @@ onMounted(() => {
       const containerElement = widget?.value?.getElementsByClassName('auth-container');
 
       const p = document.createElement('p');
-      p.classList.add('text-center', 'py-2');
+      p.classList.add('pb-5');
 
       // Add custom elements in widget
       if (context?.controller === 'registration') {
-        p.innerText = 'Copy here about Registering in to your Advance America account';
+        p.innerText = 'Welcome to your new way to money. Over 150,000 5-Star Reviews and counting.';
         titleElement![0].after(p);
 
         return;
       }
 
       if (context?.controller === 'primary-auth') {
-        p.innerText = 'Copy here about Login in to your Advance America account';
+        p.innerText = 'Welcome back to your new way to money.';
         titleElement![0].after(p);
 
         return;
@@ -78,6 +78,21 @@ onUnmounted(() => {
   #okta-sign-in.auth-container {
     border: none;
     text-align: left;
+    position: relative;
+    h2, p, h1, h3, label, span, a, input {
+      color: #072238;
+    }
+
+    .auth-footer {
+      position: absolute;
+      top: -80px;
+      right: 0;
+      font-weight: bold;
+
+      a.link {
+        color: #072238;
+      }
+    }
 
     .button.button-primary {
       border-radius: 26px;
@@ -91,12 +106,14 @@ onUnmounted(() => {
     }
 
     .okta-sign-in-header {
+      pointer-events: none;
       border-bottom-color: transparent;
     }
 
     .okta-form-title {
       font-size: 24px;
       font-weight: 700;
+      text-align: left;
     }
 
     .button {
@@ -107,8 +124,15 @@ onUnmounted(() => {
     }
 
     form.o-form {
+      .okta-form-input-field {
+        border: 0;
+      }
       .o-form-control input {
         background: #F7F6F7;
+        color: #072238;
+        box-shadow: 0px 2px 2px 0px #00000014 inset;
+        border-radius: 8px;
+        border: none;
       }
     }
 
